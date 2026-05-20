@@ -1,4 +1,4 @@
-# Análise de Mídia Paga — Attribution Modeling & Budget Optimization
+# Qual Canal Realmente Converte? — Atribuição e Otimização de Budget de Mídia
 
 Análise completa de campanhas de mídia paga para responder à pergunta: **qual canal realmente gera conversões — e como alocar o budget para maximizar ROAS?**
 
