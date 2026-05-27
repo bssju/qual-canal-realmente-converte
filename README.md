@@ -103,7 +103,7 @@ A otimização redistribui budget de Google Search (saturado, ROAS marginal decr
 
 ```
 media-paga-attribution/
-├── media-paga-attribution.ipynb
+├── atribuicao_midia_paga.ipynb
 └── README.md
 ```
 
@@ -170,6 +170,18 @@ Maximiza $\sum_i a_i \cdot x_i^{1+b_i}$ sujeito a $\sum_i x_i = B_{total}$ e $0{
 Lineariza a função côncava por aproximação piecewise linear em 20 segmentos por canal, formulada como programação linear inteira. Resolvido com CBC (solver open-source do PuLP). Status: **Optimal**. Receita: **R$ 6.200.405 (+14,3%)**.
 
 A diferença de receita entre SLSQP e ILP é de apenas **R$ 4.848** — o ILP chega levemente acima do contínuo porque a discretização favorece Meta Feed (canal de maior ROAS marginal) na margem.
+
+---
+
+## Conclusão
+
+**O modelo Last-Click distorce sistematicamente a atribuição — e induz alocações de budget subótimas.**
+
+- **Last-Click supervaloriza Google Search em −11,8 p.p.:** o canal captura o clique final, mas frequentemente o usuário chegou via Display ou Stories antes. R$ 626.556 a mais de crédito do que merece
+- **Last-Click subvaloriza Google Display em +9,5 p.p.:** o canal raramente é o último clique, mas aparece no início de boa parte das jornadas que convertem. R$ 506.873 a menos de crédito do que merece
+- **Linear e Time-Decay chegam a conclusões semelhantes ao Shapley**, mas sem o embasamento axiomático — o Shapley é o único modelo que satisfaz eficiência, simetria, nulidade e aditividade simultaneamente
+- **A realocação baseada em Shapley + ILP eleva o ROAS esperado de 2,32× para 2,66×** — ganho de +14,3% de receita (R$ 777.906) sem aumento de budget, redistribuindo investimento de Google Search (saturado) para Meta Feed e Google Display (subinvestidos)
+- **A diferença entre SLSQP e ILP é de apenas R$ 4.848 (−0,08%)** — o ILP é preferível operacionalmente por gerar alocações em múltiplos de R$ 1.000, compatíveis com os mínimos das plataformas
 
 ---
 
